@@ -1,0 +1,79 @@
+Project Description Document
+
+Object Detection: Cricket Bat, Ball, and Stumps
+
+Overview:
+● This project carries 20 marks (20 weightage) %
+● Evaluation Mode: Based on the presentation, video, and submitted artifacts (dataset, code, weights, CSV outputs).
+
+
+
+Problem Description:
+You are required to build a model that detects whether regions in a cricket image contain a bat, a ball, stumps, or no object (if there are none). In this exercise, you must create your own dataset, for example, by downloading images from the Internet.
+
+
+Dataset:
+	● The data set (at least 300 images) needs to be created
+	● Teams may collaborate on the creation of a common data set for training and testing the classification models
+	● Images should include a balanced mix of:
+		○ Cricket bat images (various angles, partial/complete views)
+		○ Cricket ball images (on ground, in air, in hand, etc.)
+		○ Stumps (clear, occluded, etc.)
+		○ No-object images (grass, pitch, background scenes)
+	● Dataset requirements:
+		○ All images must have a 4:3 aspect ratio and be resized to 800 x 600 pixels.
+		○ Note: It is acceptable to downsize higher resolution images. Images with a resolution lower than 800x600 should NOT be scaled up / used
+		○ Include a short README file describing image sources.
+
+
+
+Modeling Task:
+	● Divide each 800 x 600 image into an 8×8 grid (64 cells), as shown in the image below.
+	● Predict for each grid cell:
+		○ 0 → no object
+		○ 1 → ball
+		○ 2 → bat
+		○ 3 → stump
+		○ Note: In case multiple objects are present in a cell, the classifier should detect any ONE of them.
+	● Any hand-crafted feature engineering techniques for images can be used. This implies that methods like CNNs, or equivalents, that automatically create features from images, SHOULD NOT be used.
+	● Save the trained model as model_<teamname>.pkl.
+	● Run your final (best) model on both the train and test datasets and capture the outcome in a CSV file having the following format:
+		○ ImageFileName, TrainOrTest, c01, c02, …, c64
+		○ The value in each column should be 0, 1, 2, or 3 depending on the prediction, as enumerated above.
+
+
+For example, the entry in the CSV file for the above image will look as follows
+	● Column c35 should be marked as 1 since it contains the ball.
+	● Columns c20, c55, and c63 should be marked as 2 since they contain the bat.
+	● Columns c28 and c36 should be marked as 3 since they contain the stump.
+	● All remaining columns should be marked as 0, indicating no object.
+
+
+
+Deliverables:
+Deliverable 						Description
+----------------				---------------------------------------------------------------------------
+Dataset							Minimum 300 images per team (with folder structure and README.txt explaining sources).
+Source Code						All scripts/notebooks used for data processing, feature creation, model training, and inference.
+Performance Metrics				On train/test data
+Model Weights					Trained pickle file (.pkl).
+Predictions CSV					Output file as specified above.
+Presentation					Well-structured slide deck summarizing approach, methodology, metrics, and results.
+								See Presentation Guidelines below for more information
+Video (about 5 minutes)			Overview of the entire workflow – data, features, model, results, challenges, and key learnings.
+
+
+
+
+Presentation Guidelines
+	● There is no limit on the number of slides in the presentation. The presentation should document all aspects of the project, but precisely and in a compact manner.
+	● The first/title slide should contain the roll numbers and names of all the team members.
+	● Following the title slide, there should be a maximum of 3 slides containing an executive summary,
+	● As mentioned above, the remaining slides should capture all aspects of the project: problem explanation; details of all the paths and steps taken; metrics; observations, analysis, conclusions; challenges, and learnings.
+	○ Note: Include all aspects of the project, including paths taken that resulted in dead-ends/failures / non-optimal results, etc. That is, it should document the entire efforts of the team.
+	● The video time should not exceed 5 minutes, and if it does by more than 15 seconds, there will be a penalty.
+
+
+
+
+
